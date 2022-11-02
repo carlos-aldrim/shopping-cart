@@ -17,7 +17,6 @@ export const useStyles = makeStyles({
   },
   cart: {
     display: "flex",
-    width: "100%",
   },
   productCard: {
     width: "57.362%",

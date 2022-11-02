@@ -4,22 +4,24 @@ export const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
   },
   productsList: {
-    maxWidth: "1752px",
+    minWidth: "fit-content",
+    maxWidth: "fit-content",
     display: "flex",
     flexWrap: "wrap",
-    flexDirection: "row",
     padding: "0px",
-    margin: "62px 0px 94px 0px",
+    margin: "0px 4.55% 94px 3.55%",
+    justifyContent: "space-evenly",
   },
   loading: {
     display: "flex",
     flexDirection: "row",
+    margin: "0px 4.55% 94px 3.55%",
+    justifyContent: "space-evenly",
   },
   skeleton: {
-    margin: "77px 0px 0px 15px",
+    margin: "0px 0px 15px 27px",
     borderRadius: "5px",
   },
 });

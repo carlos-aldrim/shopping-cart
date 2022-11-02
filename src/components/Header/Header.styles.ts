@@ -3,8 +3,10 @@ import { makeStyles } from "@mui/styles";
 export const useStyles = makeStyles({
   container: {
     height: "100px",
-    width: "100%",
+    minWidth: "max-content",
+    maxWidth: "100%",
     background: "#FFFFFF",
+    marginBottom: "90px"
   },
   subContainer: {
     padding: "0px 116px 0px 118px",

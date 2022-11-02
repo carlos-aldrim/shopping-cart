@@ -52,7 +52,7 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({
       <Box className={styles.container}>
         <Box className={styles.subContainer} onClick={onProductButtonClick}>
           <Box className={styles.image}>
-            <img src={image} alt={image}/>
+            <img src={image} alt="image-product"/>
           </Box>
           <Box className={styles.productInfo}>
             <Typography className={styles.title}>{title.slice(0, 25)}{title.length > 25 ? "..." : ""}</Typography>
@@ -63,7 +63,7 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({
         <Box className={styles.footer}>
           <Box className={styles.evaluation}>
             <Typography>{rate.toFixed(1)}</Typography>
-            <img src={StarIcon} alt="StarIcon"/>
+            <img src={StarIcon} alt="star-icon"/>
           </Box>
           <Button onClick={onAddProductToCartClick}>Adicionar ao carrinho</Button>
         </Box>

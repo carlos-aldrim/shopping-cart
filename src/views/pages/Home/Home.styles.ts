@@ -2,15 +2,15 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles({
   main: {
-    height: "calc(100vh - 108px)",
-    width: "100%",
+    height: "auto",
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
   },
   animation: {
-    width: "50%",
+    width: "40%",
+    marginLeft: "5%",
   },
   openingText: {
     "&.MuiTypography-root": {
@@ -27,7 +27,7 @@ export const useStyles = makeStyles({
     },
   },
   text: {
-    marginRight: "120px",
+    marginRight: "9%",
   },
   logo: {
     display: "flex",

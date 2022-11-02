@@ -4,9 +4,9 @@ export const useStyles = makeStyles({
   main: {
     display: "flex",
     width: "auto",
-    height: "calc(100vw - 700px)",
+    height: "220px",
     justifyContent: "space-between",
-    margin: "82px 82px 0px 82px",
+    margin: "0px 82px 0px 82px",
   },
   socialNetworks: {
     display: "flex",

@@ -44,9 +44,10 @@ export const Products: React.FC = () => {
           </Box>
         ) : (
           <Box className={styles.loading}>
-            <Skeleton className={styles.skeleton} variant="rectangular" width={424} height={599}/>
-            <Skeleton className={styles.skeleton} variant="rectangular" width={424} height={599}/>
-            <Skeleton className={styles.skeleton} variant="rectangular" width={424} height={599}/>
+            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
+            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
+            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
+            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
           </Box>
         )
       }

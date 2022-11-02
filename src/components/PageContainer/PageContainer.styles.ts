@@ -5,6 +5,7 @@ export const useStyles = makeStyles({
     minHeight: "calc(100vh - 16px)",
     height: "auto",
     backgroundColor: "#F7F6F6",
-    width: "100%",
+    minWidth: "max-content",
+    maxWidth: "100%",
   },
 });
