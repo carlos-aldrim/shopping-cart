@@ -1,5 +1,5 @@
 import { Router } from "components/Router";
-import { ValueContext, ValueProvider } from "contexts";
+import { ValueProvider } from "contexts";
 import React from "react";
 
 export const App: React.FC = () => {

@@ -12,6 +12,7 @@ export const useStyles = makeStyles({
     borderRadius: "5px",
     backgroundColor: "#FFFFFF",
     margin: "0px 0px 15px 14px",
+    cursor: "pointer",
     "&:hover": {
       boxShadow: "0 0 10px #C4C4C4",
     },
@@ -87,8 +88,8 @@ export const useStyles = makeStyles({
     width: "100%",
     height: "40px",
     "& button": {
-      width: "60%",
-      fontSize: "60%",
+      width: "100%",
+      fontSize: "80%",
       backgroundColor: "#89D963",
       color: "#FFFFFF",
       display: "flex",

@@ -43,57 +43,45 @@ export const ValueProvider: React.FC<ValueProviderProps> = ({children}) => {
     }
     else {
       const findProduct = cartProducts.find((item) => item.id === product.id);
-      if(finality === "initial") {
-        if (findProduct) {
-          return 0;
-        }
-        else {
-          cartProducts.push({
-            id: product.id,
-            title: product.title,
-            image: product.image,
-            price: product.price,
-            count: 1,
-          });
-          setCart(cartProducts);
-          localStorage.setItem("cart", JSON.stringify(cartProducts));
-          return 1;
-        }
-      }
-      else {
-        if(finality === "increase") {
+      switch(finality) {
+        case "initial":
+          if (!findProduct) {
+            cartProducts.push({
+              id: product.id,
+              title: product.title,
+              image: product.image,
+              price: product.price,
+              count: 1,
+            });
+            setCart(cartProducts);
+            localStorage.setItem("cart", JSON.stringify(cartProducts));
+          }
+          break;
+        case "increase":
           cartProducts.map((item) => {
             if((item.id === product.id) && (product.rating.count > item.count)) {
               item.count++;
             };
             setCart(cartProducts);
             localStorage.setItem("cart", JSON.stringify(cart));
-            return 1;
           });
-        }
-        else {
-          if(finality === "decrease") {
-            cartProducts.map((item) => {
-              if((item.id === product.id) && (item.count > 1)) {
-                item.count--;
-              };
-              setCart(cartProducts);
-              localStorage.setItem("cart", JSON.stringify(cart));
-              return 1;
-            });
-          }
-          else {
-            if(finality === "remove") {
-              const productToRemove = cartProducts.filter((item) => item.id !== product.id);
-              setCart(productToRemove);
-              localStorage.setItem("cart", JSON.stringify(productToRemove));
-              return 1;
-            }
-            else {
-              return 0;
-            }
-          }
-        }
+          break;
+        case "decrease":
+          cartProducts.map((item) => {
+            if((item.id === product.id) && (item.count > 1)) {
+              item.count--;
+            };
+            setCart(cartProducts);
+            localStorage.setItem("cart", JSON.stringify(cart));
+          });
+          break;
+        case "remove":
+          const productToRemove = cartProducts.filter((item) => item.id !== product.id);
+          setCart(productToRemove);
+          localStorage.setItem("cart", JSON.stringify(productToRemove));
+          break;
+        default:
+          break;
       }
     }
   };

@@ -88,6 +88,7 @@ export const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
+    cursor: "pointer",
   },
   popButton: {
     width: "32px",

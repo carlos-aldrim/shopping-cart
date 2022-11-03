@@ -11,7 +11,7 @@ import { ValueContext } from "contexts";
 export const Header: React.FC = () => {
   const styles = useStyles();
   const navigate = useNavigate();
-  const {cart, totalProductsCart} = React.useContext(ValueContext);
+  const { totalProductsCart } = React.useContext(ValueContext);
 
   const onCartButtonClick = () => {
     navigate("/cart");
@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
       <Box className={styles.container}>
         <Box className={styles.subContainer}>
           <Box>
-              <Logo/>
+            <Logo/>
           </Box>
           <Box className={styles.menu}>
             <Link className={styles.link} to={PagesRoutes.home}>INICIO</Link>

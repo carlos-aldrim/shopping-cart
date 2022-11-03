@@ -45,6 +45,7 @@ export const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
+    cursor: "pointer",
     "& img": {
       width: "38.25px",
       height: "34px",

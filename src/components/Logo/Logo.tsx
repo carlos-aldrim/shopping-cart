@@ -8,10 +8,8 @@ export const Logo: React.FC = () => {
   const styles = useStyles();
 
   return (
-    <React.Fragment>
-      <Link to={PagesRoutes.home} className={styles.container}>
-        <img src={IconLogo} alt="IconLogo"/>
-      </Link>
-    </React.Fragment>
+    <Link to={PagesRoutes.home} className={styles.container}>
+      <img src={IconLogo} alt="IconLogo"/>
+    </Link>
   );
 };

@@ -13,7 +13,7 @@ export const Details: React.FC = () => {
   const location = useLocation();
   const {products, setProducts, countCartProducts} = React.useContext(ValueContext);
   const [productID] = React.useState((Number(location.pathname.split("/").slice(-1)[0])) - 1);
-  const [installmentPrice, setiInstallmentPrice] = React.useState(0);
+  const [installmentPrice, setInstallmentPrice] = React.useState(0);
 
   React.useEffect(() => {
     API.get("")
@@ -23,7 +23,7 @@ export const Details: React.FC = () => {
       .catch((err) => {
         console.error("ops! ocorreu um erro : " + err);
       });
-      setiInstallmentPrice((products[productID].price)/10);
+      setInstallmentPrice((products[productID].price)/10);
   }, []);
 
   const onAddProductToCartClick = () => {
