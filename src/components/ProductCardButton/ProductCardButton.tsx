@@ -61,10 +61,6 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({
           </Box>
         </Box>
         <Box className={styles.footer}>
-          <Box className={styles.evaluation}>
-            <Typography>{rate.toFixed(1)}</Typography>
-            <img src={StarIcon} alt="star-icon"/>
-          </Box>
           <Button onClick={onAddProductToCartClick}>Adicionar ao carrinho</Button>
         </Box>
       </Box>
