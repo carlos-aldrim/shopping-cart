@@ -1,15 +1,13 @@
-import { Box, Button, Rating, Typography } from "@mui/material";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
-import { PageContainer } from "components/PageContainer/PageContainer";
 import { ValueContext } from "contexts";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { API } from "services/API";
-import { useStyles } from "./Details.styles";
+import { Container, Body, Image, Title, Description, Rate, ButtonContainer, Price, DetailsProduct } from "./Details.styles";
+import { Button, Rating } from "@mui/material";
 
 export const Details: React.FC = () => {
-  const styles = useStyles();
   const location = useLocation();
   const {products, setProducts, countCartProducts} = React.useContext(ValueContext);
   const [productID] = React.useState((Number(location.pathname.split("/").slice(-1)[0])) - 1);
@@ -31,27 +29,27 @@ export const Details: React.FC = () => {
   };
 
   return (
-    <PageContainer className={styles.container}>
+    <Container>
       <Header/>
-      <Box className={styles.body}>
-        <Box className={styles.image}>
+      <Body>
+        <Image>
           <img src={products[productID].image} alt={"Image" + {productID}}/>
-        </Box>
-        <Box className={styles.detailsProduct}>
-          <Typography className={styles.title}>{products[productID].title}</Typography>
-          <Typography className={styles.description}>{products[productID].description}</Typography>
-          <Box className={styles.rating}>
+        </Image>
+        <DetailsProduct>
+          <Title>{products[productID].title}</Title>
+          <Description>{products[productID].description}</Description>
+          <Rate>
             <Rating readOnly value={products[productID].rating.rate} size="small"/>
-            <Typography className={styles.description}>{products[productID].rating.count} {(products[productID].rating.count) == 1 ? "disponível" : "disponíveis"}</Typography>
-          </Box>
-          <Typography className={styles.price}>R$ {products[productID].price.toFixed(2)} ou 10x de R$ {installmentPrice.toFixed(2)}</Typography>
-          <Typography className={styles.description}>Categoria: {products[productID].category.charAt(0).toUpperCase()}{products[productID].category.substring(1)}</Typography>
-          <Box className={styles.button}>
+            <Description>{products[productID].rating.count} {(products[productID].rating.count) == 1 ? "disponível" : "disponíveis"}</Description>
+          </Rate>
+          <Price>R$ {products[productID].price.toFixed(2)} ou 10x de R$ {installmentPrice.toFixed(2)}</Price>
+          <Description>Categoria: {products[productID].category.charAt(0).toUpperCase()}{products[productID].category.substring(1)}</Description>
+          <ButtonContainer>
             <Button onClick={onAddProductToCartClick}>Adicionar ao carrinho</Button>
-          </Box>
-        </Box>
-      </Box>
+          </ButtonContainer>
+        </DetailsProduct>
+      </Body>
       <Footer/>
-    </PageContainer>
+    </Container>
   );
 };

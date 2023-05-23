@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
-import { useStyles } from "./ProductCardButton.styles";
+import { Button } from "@mui/material";
+import { Description, Footer, Price, ProductInfoContent, SubContainer, Title, Container, Image } from "./ProductCardButton.styles";
 import { useNavigate } from "react-router-dom";
 import { ProductInfo } from "services/Interface";
 import { ValueContext } from "contexts/value";
@@ -24,7 +24,6 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({
   rate,
   product,
 }) => {
-  const styles = useStyles();
   const navigate = useNavigate();
   const [installmentPrice, setiInstallmentPrice] = React.useState(0);
   const {countCartProducts} = React.useContext(ValueContext);
@@ -48,21 +47,21 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({
 
   return (
     <React.Fragment>
-      <Box className={styles.container}>
-        <Box className={styles.subContainer} onClick={onProductButtonClick}>
-          <Box className={styles.image}>
+      <Container>
+        <SubContainer onClick={onProductButtonClick}>
+          <Image>
             <img src={image} alt="image-product"/>
-          </Box>
-          <Box className={styles.productInfo}>
-            <Typography className={styles.title}>{title.slice(0, 25)}{title.length > 25 ? "..." : ""}</Typography>
-            <Typography className={styles.description}>{description.slice(0, 100)}{description.length > 100 ? "..." : ""}</Typography>
-            <Typography className={styles.price}>R$ {price?.toFixed(2)} ou 10x de R$ {installmentPrice.toFixed(2)}</Typography>
-          </Box>
-        </Box>
-        <Box className={styles.footer}>
+          </Image>
+          <ProductInfoContent>
+            <Title>{title.slice(0, 25)}{title.length > 25 ? "..." : ""}</Title>
+            <Description>{description.slice(0, 100)}{description.length > 100 ? "..." : ""}</Description>
+            <Price>R$ {price?.toFixed(2)} ou 10x de R$ {installmentPrice.toFixed(2)}</Price>
+          </ProductInfoContent>
+        </SubContainer>
+        <Footer>
           <Button onClick={onAddProductToCartClick}>Adicionar ao carrinho</Button>
-        </Box>
-      </Box>
+        </Footer>
+      </Container>
     </React.Fragment>
   );
 };

@@ -4,12 +4,11 @@ import { PageContainer } from "components/PageContainer/PageContainer";
 import { ProductCart } from "components/ProductCart";
 import { ValueContext } from "contexts";
 import React from "react";
-import { useStyles } from "./Cart.styles";
+import { Definitions, PurchaseInformation, Strong, TextGroupSeparator, TextsRow, Title, ValueContainer, CartContent, CardProduct, TitleIndividual } from "./Cart.styles";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "components/Footer";
 
 export const Cart: React.FC = () => {
-  const styles = useStyles();
   const navigate = useNavigate();
   const {cart, cartTotalValue, totalProductsCart} = React.useContext(ValueContext);
 
@@ -23,9 +22,9 @@ export const Cart: React.FC = () => {
       {
         cart.length !== 0 ? (
           <Box>
-            <Typography className={styles.title}>Seu carrinho</Typography>
-            <Box className={styles.cart}>
-              <Box className={styles.productCard}>
+            <Title>Seu carrinho</Title>
+            <CartContent>
+              <CardProduct>
                 {cart.map((item) => (
                   <ProductCart
                     id={item.id}
@@ -35,40 +34,40 @@ export const Cart: React.FC = () => {
                     count={item.count}
                   />
                 ))}
-              </Box>
+              </CardProduct>
               {cart.length === 0 ? "" : (
-                <Box className={styles.purchaseInformation}>
-                  <Box className={styles.textGroupSeparator}>
+                <PurchaseInformation>
+                  <TextGroupSeparator>
                     <Box>
-                      <Box className={styles.textsRow}>
-                        <Typography className={styles.definitions}>Desconto:</Typography>
-                        <Typography className={styles.strong}>R$ 0.00</Typography>
-                      </Box>
-                      <Box className={styles.textsRow}>
-                        <Typography className={styles.definitions}>Frete:</Typography>
-                        <Typography className={styles.strong}>- R$ 0.00</Typography>
-                      </Box>
+                      <TextsRow>
+                        <Definitions>Desconto:</Definitions>
+                        <Strong>R$ 0.00</Strong>
+                      </TextsRow>
+                      <TextsRow>
+                        <Definitions>Frete:</Definitions>
+                        <Strong>- R$ 0.00</Strong>
+                      </TextsRow>
                     </Box>
-                    <Box className={styles.valueContainer}>
-                      <Box className={styles.textsRow}>
-                        <Typography className={styles.definitions}>Quantidade:</Typography>
-                        <Typography className={styles.strong}>{totalProductsCart < 10 ? "0" : ""}{totalProductsCart}</Typography>
-                      </Box>
-                      <Box className={styles.textsRow}>
-                        <Typography className={styles.definitions}>Total:</Typography>
-                        <Typography className={styles.strong}>R$ {cartTotalValue.toFixed(2)}</Typography>
-                      </Box>
+                    <ValueContainer>
+                      <TextsRow>
+                        <Definitions>Quantidade:</Definitions>
+                        <Strong>{totalProductsCart < 10 ? "0" : ""}{totalProductsCart}</Strong>
+                      </TextsRow>
+                      <TextsRow>
+                        <Definitions>Total:</Definitions>
+                        <Strong>R$ {cartTotalValue.toFixed(2)}</Strong>
+                      </TextsRow>
                       <Button onClick={onMakePurchaseButtonClick}>Realizar compra</Button>
-                    </Box>
-                  </Box>
-                </Box>
+                    </ValueContainer>
+                  </TextGroupSeparator>
+                </PurchaseInformation>
               )}
-            </Box>
+            </CartContent>
           </Box>
         ) : (
-          <Box className={styles.titleIndividual}>
+          <TitleIndividual>
             <Typography>Seu carrinho</Typography>
-          </Box>
+          </TitleIndividual>
         )
       }
       <Footer/>

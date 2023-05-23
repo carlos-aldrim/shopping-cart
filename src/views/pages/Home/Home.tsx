@@ -1,16 +1,13 @@
-import { Box, Typography } from "@mui/material";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { PageContainer } from "components/PageContainer/PageContainer";
 import React from "react";
-import { useStyles } from "./Home.styles";
+import { Main, Animation, Text, Logo, OpeningText } from "./Home.styles";
 import Lottie from "react-lottie";
 import ShoppingCart from "assets/lotties/ShoppingCart.json";
 import VectorIcon from "assets/icons/VectorIcon.svg";
 
 export const Home: React.FC = () => {
-  const styles = useStyles();
-
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -23,23 +20,23 @@ export const Home: React.FC = () => {
   return (
     <PageContainer>
       <Header/>
-      <Box className={styles.main}>
-        <Box className={styles.animation}>
+      <Main>
+        <Animation>
           <Lottie
             options={defaultOptions}
           />
-        </Box>
-        <Box className={styles.text}>
-          <Typography className={styles.openingText}>BEM-VINDO AO</Typography>
-          <Box className={styles.logo}>
-            <Box>
-              <Typography className={styles.openingText}>FIRE</Typography>
-              <Typography className={styles.openingText}>STORE</Typography>
-            </Box>
+        </Animation>
+        <Text>
+          <OpeningText>BEM-VINDO AO</OpeningText>
+          <Logo>
+            <div>
+              <OpeningText>FIRE</OpeningText>
+              <OpeningText>STORE</OpeningText>
+            </div>
             <img src={VectorIcon} alt="VectorIcon"/>
-          </Box>
-        </Box>
-      </Box>
+          </Logo>
+        </Text>
+      </Main>
       <Footer/>
     </PageContainer>
   );

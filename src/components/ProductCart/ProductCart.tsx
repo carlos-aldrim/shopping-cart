@@ -1,8 +1,8 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { ValueContext } from "contexts";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useStyles } from "./ProductCart.styles";
+import { CountButtons, PopButton, Price, ProductCartInfo, Texts, Title, Container, Image } from "./ProductCart.styles";
 
 interface ProductCartProps {
   id: number;
@@ -19,7 +19,6 @@ export const ProductCart: React.FC<ProductCartProps> = ({
   title,
   count,
 }) => {
-  const styles = useStyles();
   const navigate = useNavigate();
   const {products, countCartProducts} = React.useContext(ValueContext);
   const productList = [...products];
@@ -40,25 +39,25 @@ export const ProductCart: React.FC<ProductCartProps> = ({
 
   return (
     <React.Fragment>
-      <Box className={styles.container}>
-        <Box onClick={onProductCartButtonClick} className={styles.productCartInfo}>
-          <Box className={styles.image}>
+      <Container>
+        <ProductCartInfo>
+          <Image>
             <img src={image} alt={image}/>
-          </Box>
-          <Box className={styles.texts}>
-            <Typography className={styles.title}>{title}</Typography>
-            <Typography className={styles.price}>R$ {price.toFixed(2)}</Typography>
-          </Box>
-        </Box>
-        <Box className={styles.countButtons}>
+          </Image>
+          <Texts>
+            <Title>{title}</Title>
+            <Price>R$ {price.toFixed(2)}</Price>
+          </Texts>
+        </ProductCartInfo>
+        <CountButtons>
           <Button onClick={onDecreaseCountButtonClick}>-</Button>
           <Typography>{count < 10 ? "0" : ""}{count}</Typography>
           <Button onClick={onIncreaseCountButtonClick}>+</Button>
-        </Box>
-        <Box className={styles.popButton}>
+        </CountButtons>
+        <PopButton>
           <Button onClick={onPopProductButtonClick}>x</Button>
-        </Box>
-      </Box>
+        </PopButton>
+      </Container>
     </React.Fragment>
   );
 };

@@ -1,15 +1,15 @@
-import { Box, Typography } from "@mui/material";
 import { Logo } from "components/Logo";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { PagesRoutes } from "views/contansts/routes";
-import { useStyles } from "./Header.styles";
+import { Container, Menu, SubContainer, TextLink, CartImage, ProfileImage } from "./Header.styles";
 import ProfileIcon from "assets/icons/ProfileIcon.svg";
 import CartIcon from "assets/icons/CartIcon.svg";
 import { ValueContext } from "contexts";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
 
 export const Header: React.FC = () => {
-  const styles = useStyles();
   const navigate = useNavigate();
   const { totalProductsCart } = React.useContext(ValueContext);
 
@@ -19,25 +19,25 @@ export const Header: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Box className={styles.container}>
-        <Box className={styles.subContainer}>
+      <Container>
+        <SubContainer>
           <Box>
             <Logo/>
           </Box>
-          <Box className={styles.menu}>
-            <Link className={styles.link} to={PagesRoutes.home}>INICIO</Link>
-            <Link className={styles.link} to={PagesRoutes.products}>PRODUTOS</Link>
-            <Link className={styles.link} to={PagesRoutes.contact}>CONTATO</Link>
-            <Box onClick={onCartButtonClick} className={styles.CartIcon}>
+          <Menu>
+            <TextLink to={PagesRoutes.home}>INICIO</TextLink>
+            <TextLink to={PagesRoutes.products}>PRODUTOS</TextLink>
+            <TextLink to={PagesRoutes.contact}>CONTATO</TextLink>
+            <CartImage onClick={onCartButtonClick}>
               <img src={CartIcon} alt="CartIcon"/>
               <Typography>{totalProductsCart < 10 ? "0" : ""}{totalProductsCart}</Typography>
-            </Box>
-            <Box className={styles.profileIcon}>
+            </CartImage>
+            <ProfileImage>
               <img src={ProfileIcon} alt="ProfileIcon"/>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
+            </ProfileImage>
+          </Menu>
+        </SubContainer>
+      </Container>
     </React.Fragment>
   );
 };

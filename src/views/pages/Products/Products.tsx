@@ -1,15 +1,12 @@
-import { Box, Skeleton } from "@mui/material";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
-import { PageContainer } from "components/PageContainer/PageContainer";
 import { ProductCardButton } from "components/ProductCardButton";
 import { ValueContext } from "contexts/value";
 import React from "react";
 import { API } from "services/API";
-import { useStyles } from "./Products.styles";
+import { Container, ProductsList, Loading, CardLoading } from "./Products.styles";
 
 export const Products: React.FC = () => {
-  const styles = useStyles();
   const { products, setProducts } = React.useContext(ValueContext);
   const [loading, setLoading] = React.useState(false);
 
@@ -25,11 +22,11 @@ export const Products: React.FC = () => {
   }, []);
 
   return (
-    <PageContainer className={styles.container}>
+    <Container>
       <Header/>
       {
         loading ? (
-          <Box className={styles.productsList}>
+          <ProductsList>
             {products.map((item) => (
               <ProductCardButton
                 product={item}
@@ -41,17 +38,17 @@ export const Products: React.FC = () => {
                 rate={item.rating.rate}
               />
             ))}
-          </Box>
+          </ProductsList>
         ) : (
-          <Box className={styles.loading}>
-            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
-            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
-            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
-            <Skeleton className={styles.skeleton} variant="rectangular" width={"100%"} height={444}/>
-          </Box>
+          <Loading>
+            <CardLoading variant="rectangular" width={"100%"} height={444}/>
+            <CardLoading variant="rectangular" width={"100%"} height={444}/>
+            <CardLoading variant="rectangular" width={"100%"} height={444}/>
+            <CardLoading variant="rectangular" width={"100%"} height={444}/>
+          </Loading>
         )
       }
       <Footer/>
-    </PageContainer>
+    </Container>
   );
 };
