@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { useStyles } from "./ProductCardButton.styles";
-import StarIcon from "assets/icons/StarIcon.svg";
 import { useNavigate } from "react-router-dom";
 import { ProductInfo } from "services/Interface";
 import { ValueContext } from "contexts/value";

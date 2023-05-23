@@ -7,7 +7,7 @@ export const useStyles = makeStyles({
   },
   productsList: {
     minWidth: "fit-content",
-    maxWidth: "fit-content",
+    maxWidth: "min-content",
     display: "flex",
     flexWrap: "wrap",
     padding: "0px",
