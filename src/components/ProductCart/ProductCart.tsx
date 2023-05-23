@@ -1,7 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { ValueContext } from "contexts";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { CountButtons, PopButton, Price, ProductCartInfo, Texts, Title, Container, Image } from "./ProductCart.styles";
 
 interface ProductCartProps {
@@ -19,14 +18,10 @@ export const ProductCart: React.FC<ProductCartProps> = ({
   title,
   count,
 }) => {
-  const navigate = useNavigate();
   const {products, countCartProducts} = React.useContext(ValueContext);
   const productList = [...products];
   const findProduct = productList.find((item) => item.id === id);
 
-  const onProductCartButtonClick = () => {
-    navigate("/products/" + id);
-  };
   const onIncreaseCountButtonClick = () => {
     countCartProducts(findProduct, "increase");
   };
